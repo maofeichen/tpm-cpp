@@ -6,13 +6,26 @@
  */
 #include "log.h"
 #include <iostream>
+#include <fstream>
+#include <string>
 
-Log::Log(std::string log_path)
-{
-    log_path_ = log_path;
-}
+using namespace std;
 
-void Log::read_log()
+void
+Log::readlog()
 {
-  std::cout << "log: " << log_path_ << std::endl;
+  ifstream log(logpath_);
+  if(log.is_open() )
+  {
+    std::cout << "reading log: " << logpath_ << std::endl;
+
+    string rec;
+    while(getline(log, rec) ) {
+      cout << rec << endl;
+      linecnt_++;
+    }
+    cout << "total lines: " << linecnt_ << endl;
+    log.close();
+  }
+  else { cout << "error open log: " << logpath_ << endl; }
 }

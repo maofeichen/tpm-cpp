@@ -12,12 +12,20 @@
 
 class Log{
 private:
-  std::string log_path_;
+  std::string         logpath_;
+  unsigned long long  linecnt_;
 
 public:
-  Log(std::string log_path);
+  Log(std::string logpath) : logpath_(logpath), linecnt_(0) {}
 
-  void read_log();
+  void readlog();
+
+  // Reads a record (one line) of the log.
+  // Returns:
+  //  normal: a record (one line), or
+  //  end:    special if end of file or
+  //  except: opening log error
+  std::string read_record();
 };
 
 #endif /* LOG_H_ */

@@ -6,13 +6,46 @@
  */
 #include "log.h"
 #include <iostream>
-#include <fstream>
 #include <string>
 
 using namespace std;
 
-void
-Log::readlog()
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// public functions
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+void Log::close()
+{
+  log_.close();
+}
+
+void Log::readline(string &line)
+{
+  getline(log_, line);
+}
+
+bool Log::is_eof()
+{
+  return log_.eof();
+}
+
+bool Log::is_open()
+{
+  if(log_.is_open() )
+  {
+    std::cout << "reading log: " << logpath_ << std::endl;
+    return true;
+  }
+  else
+  {
+    cout << "error opening log: " << logpath_ << endl;
+    return false;
+  }
+}
+
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// private functions
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+void Log::read()
 {
   ifstream log(logpath_);
   if(log.is_open() )

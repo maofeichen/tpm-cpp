@@ -1,11 +1,15 @@
+CC = g++
+CF = -g
+LF = -g
+
 tpm : main.o log.o
-	g++ -o tpm main.o -g
+	$(CC) -o tpm main.o log.o $(LF) 
 
 main.o : main.cpp
-	g++ -c main.cpp -g
+	$(CC) -c main.cpp $(CF) 
 
 log.o : log.cpp
-	g++ -c log.cpp -g
+	$(CC) -c log.cpp $(CF) 
 	
 clean : 
 	rm -rf *.o tpm

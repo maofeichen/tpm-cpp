@@ -23,8 +23,21 @@ int main(int argc, char* argv[])
 	}
 
 	Log log(argv[1]);
-	std:: cout << "size of log object: " << sizeof(log) << std::endl;
-	// log.readlog();
+	if(log.is_open() )
+	{
+	  std::string rec;
+	  unsigned long long rec_cnt = 0;
+
+	  while(true) {
+	    log.readline(rec);
+	    if(log.is_eof() )
+	      break;
+	    std::cout << rec << std::endl;
+	    rec_cnt++;
+	  }
+	  std::cout << "total recs: " << rec_cnt << std::endl;
+	  log.close();
+	}
 
 	return 0;
 }

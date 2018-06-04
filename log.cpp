@@ -32,7 +32,7 @@ bool Log::is_open()
 {
   if(log_.is_open() )
   {
-    std::cout << "reading log: " << logpath_ << std::endl;
+    cout << "reading log: " << logpath_ << endl;
     return true;
   }
   else
@@ -50,7 +50,7 @@ void Log::read()
   ifstream log(logpath_);
   if(log.is_open() )
   {
-    std::cout << "reading log: " << logpath_ << std::endl;
+    cout << "reading log: " << logpath_ << endl;
 
     string rec;
     while(getline(log, rec) ) {

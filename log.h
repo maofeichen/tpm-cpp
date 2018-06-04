@@ -8,6 +8,7 @@
 #ifndef LOG_H_
 #define LOG_H_
 
+#include "type.h"
 #include <fstream>
 #include <string>
 
@@ -22,9 +23,9 @@ public:
   bool is_open();   // is the log open
 
 private:
-  unsigned long long  linecnt_;
-  std::ifstream       log_;
-  std::string         logpath_;
+  u64             linecnt_;
+  std::ifstream   log_;
+  std::string     logpath_;
 
   // Opens the log and prints line by line. For testing.
   void read();

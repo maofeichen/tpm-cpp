@@ -18,8 +18,7 @@ public:
     : logpath_(logpath), linecnt_(0), log_(logpath.c_str() ) {}
 
   void close();
-  void readline(std::string &line); // Reads one line of the log.
-  bool is_eof();    // is end of the log file
+  std::istream& readline(std::string &line);
   bool is_open();   // is the log open
 
 private:

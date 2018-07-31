@@ -18,14 +18,9 @@ void Log::close()
   log_.close();
 }
 
-void Log::readline(string &line)
+std::istream& Log::readline(std::string &line)
 {
-  getline(log_, line);
-}
-
-bool Log::is_eof()
-{
-  return log_.eof();
+  return getline(log_, line);
 }
 
 bool Log::is_open()

@@ -13,10 +13,11 @@
 
 class Record{
 public:
-  Record(std::string s_rec);
+  Record(std::string &s_rec);
   u8  get_flag() { return flag_; }
 
 private:
+  std::string &s_rec_;
   u8  flag_;
   u32 s_addr_;
   u32 s_val_;
@@ -24,10 +25,16 @@ private:
   u32 d_val_;
   u8  bytesz_;
   u64 ts_;  // time stamp (seq No.)
-  bool is_ld_;      // load
-  bool is_ld_ptr_;  // load pointer
-  bool is_st_;      // store
-  bool is_st_ptr_;  // store pointer
+  enum m_type {
+    ld,     // load
+    ld_ptr, // load pointer
+    st,     // store
+    st_ptr  // store pointer
+  };
+//  bool is_ld_;      // load
+//  bool is_ld_ptr_;  // load pointer
+//  bool is_st_;      // store
+//  bool is_st_ptr_;  // store pointer
 
   void  analyze_record();
 };

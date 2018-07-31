@@ -6,6 +6,7 @@
  */
 
 #include "log.h"
+#include "record.h"
 #include "type.h"
 #include <iostream>
 
@@ -30,14 +31,15 @@ int main(int argc, char* argv[])
 	  return -1;
 
 	// stage - opens log successfully
-	string rec;
-	u64 rec_cnt = 0;
+	string line;
+	u64 lcnt = 0;
 
-	while(log.readline(rec)) {
-	  cout << rec << endl;
-	  rec_cnt++;
+	while(log.readline(line)) {
+	  // cout << line << endl;
+	  Record rec(line);
+	  lcnt++;
 	}
-	cout << "total records: " << rec_cnt << endl;
+	cout << "total records: " << lcnt << endl;
 
 	log.close();
 

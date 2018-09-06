@@ -9,7 +9,8 @@
 
 using namespace std;
 
-void Util::split_str(const char *s, const char c, vector<string> &res)
+void
+Util::split_str(const char *s, const char c, vector<string> &res)
 {
   do {
     const char *b = s;

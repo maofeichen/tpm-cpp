@@ -36,7 +36,7 @@ private:
 //  bool is_st_;      // store
 //  bool is_st_ptr_;  // store pointer
 
-  void  analyze_record();
+  void  parse_record();
 };
 
 #endif /* RECORD_H_ */

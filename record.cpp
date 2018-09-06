@@ -15,11 +15,14 @@ using namespace std;
 Record::Record(std::string &s_rec) : s_rec_(s_rec)
 {
   // std::cout << s_rec_ << std::endl;
-  analyze_record();
+  parse_record();
 }
 
-void Record::analyze_record()
+void Record::parse_record()
 {
   vector<string> recs;
   Util::split_str(s_rec_.c_str(), '\t', recs);
+//  for(auto it = recs.begin(); it != recs.end(); ++it)
+//    cout << *it << " ";
+//  cout << endl;
 }

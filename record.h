@@ -13,11 +13,12 @@
 
 class Record{
 public:
-  Record(std::string &s_rec);
+  Record(const std::string &s_rec);
+
   u8  get_flag() { return flag_; }
 
 private:
-  std::string &s_rec_;
+  const std::string &s_rec_;
   u8  flag_;
   u32 s_addr_;
   u32 s_val_;

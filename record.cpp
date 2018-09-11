@@ -12,7 +12,7 @@
 
 using namespace std;
 
-Record::Record(std::string &s_rec) : s_rec_(s_rec)
+Record::Record(const std::string &s_rec) : s_rec_(s_rec)
 {
   // std::cout << s_rec_ << std::endl;
   parse_record();
@@ -25,4 +25,6 @@ void Record::parse_record()
 //  for(auto it = recs.begin(); it != recs.end(); ++it)
 //    cout << *it << " ";
 //  cout << endl;
+
+  string &flag = recs[0];
 }

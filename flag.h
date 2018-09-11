@@ -98,6 +98,9 @@ const unsigned int G_TEMP_ESI           = 0xfffc;
 const unsigned int G_TEMP_EDI           = 0xfffd;
 
 class Flag{
+public:
+  static bool isCtrlMark(const std::string flag);
+  static bool isRecordMark(const std::string flag, const std::string mark);
 };
 
 #endif /* FLAG_H_ */

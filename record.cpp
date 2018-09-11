@@ -5,6 +5,7 @@
  *      Author: mchen
  */
 
+#include "flag.h"
 #include "record.h"
 #include "util.h"
 #include <iostream>
@@ -27,4 +28,17 @@ void Record::parse_record()
 //  cout << endl;
 
   string &flag = recs[0];
+  if(Flag::isCtrlMark(flag) ) { // control records
+    cout << "Control: ";
+    for(auto it = recs.begin(); it != recs.end(); ++it)
+      cout << *it << " ";
+    cout << endl;
+  }
+  else {  // data records
+    cout << "Data: ";
+    for(auto it = recs.begin(); it != recs.end(); ++it)
+      cout << *it << " ";
+    cout << endl;
+
+  }
 }

@@ -37,6 +37,7 @@ int main(int argc, char* argv[])
 	while(log.readline(line)) {
 	  // cout << line << endl;
 	  Record rec(line);
+	  rec.print_record();
 	  lcnt++;
 	}
 	cout << "total records: " << lcnt << endl;

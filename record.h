@@ -17,10 +17,16 @@ public:
   Record(const std::string &s_rec);
 
   u8    get_flag() { return flag_; }
+  bool  isCtrlRecord();
   void  print_record();
 
 private:
   const std::string &s_rec_;
+
+  // ctrl field
+  bool isCtrlRec_;
+
+  // data field
   u8  flag_;
   u32 s_addr_;
   u32 s_val_;

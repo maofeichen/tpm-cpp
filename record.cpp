@@ -18,16 +18,31 @@ using namespace std;
 Record::Record(const std::string &s_rec) : s_rec_(s_rec)
 {
   // std::cout << s_rec_ << std::endl;
+  isCtrlRec_ = false;
+  flag_   = 0;
+  s_addr_ = 0;
+  s_val_  = 0;
+  d_addr_ = 0;
+  d_val_  = 0;
+  bytesz_ = 0;
+  ts_     = 0;
+  group_mark_ = 0;
+
   parse_record();
+}
+
+bool Record::isCtrlRecord()
+{
+  return isCtrlRec_;
 }
 
 void Record::print_record()
 {
-  cout << "flag:"     << hex     << flag_
-       << " saddr:"   << s_addr_ << " sval:"  << s_val_
-       << " daddr:"   << d_addr_ << " dval:"  << d_val_
-       << " bytesz:"  << dec     << bytesz_   << " ts:"    << ts_
-       << " group mark:" << group_mark_ <<  endl;
+  cout << "flag:0x"     << hex     << (unsigned)flag_
+       << " saddr:0x"   << s_addr_ << " sval:"  << s_val_
+       << " daddr:0x"   << d_addr_ << " dval:"  << d_val_
+       << " bytesz:"  << dec     << (unsigned)bytesz_   << " ts:"    << ts_
+       << " group mark:" << (unsigned)group_mark_ <<  endl;
 }
 
 // Private ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -40,11 +55,12 @@ void Record::parse_record()
 //  cout << endl;
 
   string &flag = recs[0];
-  if(Flag::isCtrlMark(flag) ) { // control records
+  if(Flag::isCtrlMark(flag) ) { // control records, skip parsing
 //    cout << "Control: ";
 //    for(auto it = recs.begin(); it != recs.end(); ++it)
 //      cout << *it << " ";
 //    cout << endl;
+    isCtrlRec_ = true;
   }
   else {  // data records
 //    cout << "Data: ";
